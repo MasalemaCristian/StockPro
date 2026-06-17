@@ -48,6 +48,15 @@ fun CatalogoScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        Button(
+            onClick = {
+                navController.navigate("reporte")
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Ver Reporte Financiero")
+        }
+
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {

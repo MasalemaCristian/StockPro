@@ -9,6 +9,7 @@ import com.example.stockpro.screens.CatalogoScreen
 import com.example.stockpro.screens.LoginScreen
 import com.example.stockpro.viewModel.StockViewModel
 import com.example.stockpro.screens.EditarStockScreen
+import com.example.stockpro.screens.ReporteScreen
 
 @Composable
 fun NavGraph() {
@@ -66,5 +67,15 @@ fun NavGraph() {
             )
 
         }
+
+        composable("reporte") {
+
+            ReporteScreen(
+                vm = stockViewModel,
+                navController = navController
+            )
+
+        }
+
     }
 }
