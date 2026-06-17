@@ -8,7 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.stockpro.screens.CatalogoScreen
 import com.example.stockpro.screens.LoginScreen
 import com.example.stockpro.viewModel.StockViewModel
-
+import com.example.stockpro.screens.EditarStockScreen
 
 @Composable
 fun NavGraph() {
@@ -35,6 +35,23 @@ fun NavGraph() {
         }
 
         composable(
+            route = "editar/{id}"
+        ) { backStackEntry ->
+
+            val id =
+                backStackEntry.arguments
+                    ?.getString("id")
+                    ?.toIntOrNull() ?: 0
+
+            EditarStockScreen(
+                productoId = id,
+                vm = stockViewModel,
+                navController = navController
+            )
+        }
+
+
+        composable(
             route = "catalogo/{nombre}"
         ) { backStackEntry ->
 
@@ -44,7 +61,8 @@ fun NavGraph() {
 
             CatalogoScreen(
                 nombreOperario = nombre,
-                vm = stockViewModel
+                vm = stockViewModel,
+                navController = navController
             )
 
         }

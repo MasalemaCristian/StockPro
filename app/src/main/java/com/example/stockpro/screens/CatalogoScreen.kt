@@ -14,11 +14,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.stockpro.model.Producto
 import com.example.stockpro.viewModel.StockViewModel
+import androidx.navigation.NavController
 
 @Composable
 fun CatalogoScreen(
     nombreOperario: String,
-    vm: StockViewModel
+    vm: StockViewModel,
+    navController: NavController
 ) {
 
     var soloCriticos by remember {
@@ -73,7 +75,14 @@ fun CatalogoScreen(
 
             items(productosMostrar) { producto ->
 
-                ProductoCard(producto)
+                ProductoCard(
+                    producto = producto,
+                    onClick = {
+                        navController.navigate(
+                            "editar/${producto.id}"
+                        )
+                    }
+                )
 
             }
         }
@@ -82,13 +91,17 @@ fun CatalogoScreen(
 
 @Composable
 fun ProductoCard(
-    producto: Producto
+    producto: Producto,
+    onClick: () -> Unit
 ) {
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 6.dp)
+            .clickable {
+                onClick()
+            }
     ) {
 
         Column(
