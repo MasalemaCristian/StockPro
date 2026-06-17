@@ -43,7 +43,8 @@ fun NavGraph() {
                     ?: ""
 
             CatalogoScreen(
-                nombreOperario = nombre
+                nombreOperario = nombre,
+                vm = stockViewModel
             )
 
         }
