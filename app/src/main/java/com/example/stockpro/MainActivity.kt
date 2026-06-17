@@ -3,7 +3,8 @@ package com.example.stockpro
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material3.Text
+import com.example.stockpro.screens.LoginScreen
+import com.example.stockpro.ui.theme.StockProTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -11,7 +12,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            Text("StockPro funcionando")
+
+            StockProTheme {
+
+                LoginScreen(
+                    onIngresar = { nombre ->
+
+                    }
+                )
+
+            }
         }
     }
 }
